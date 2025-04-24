@@ -20,7 +20,7 @@ export default class UserEntity {
   }
 
   private static validateRequiredFields(input: BuildUserEntityInput): void {
-    const requirdFields: Array<keyof BuildUserEntityInput> = ['id', 'nome', 'idade', 'ativo', 'equipe', 'logs']
+    const requirdFields: Array<keyof BuildUserEntityInput> = ['id', 'nome', 'idade', 'ativo', 'equipe', 'logs', 'score', 'pais']
 
     for (const field of requirdFields) {
       if (!input[field]) {
@@ -36,6 +36,10 @@ export default class UserEntity {
 
     if (typeof input.ativo !== 'boolean') {
       throw new InvalidParamError('ativo', 'O campo ativo deve ser um booleano')
+    }
+
+    if (typeof input.score !== 'number') {
+      throw new InvalidParamError('score', 'O campo score deve ser um inteiro')
     }
   }
 

@@ -13,6 +13,8 @@ describe('UserEntity', () => {
       nome: 'Zé das Couves',
       idade: 25,
       ativo: true,
+      score: 123,
+      pais: 'Brasil',
       equipe: {
         nome: 'Equipe ABC',
         lider: false,
@@ -37,7 +39,7 @@ describe('UserEntity', () => {
   })
 
   test('should throw if a required field is not provided', () => {
-    const requirdFields: Array<keyof BuildUserEntityInput> = ['id', 'nome', 'idade', 'ativo', 'equipe', 'logs']
+    const requirdFields: Array<keyof BuildUserEntityInput> = ['id', 'nome', 'idade', 'ativo', 'equipe', 'logs', 'score', 'pais']
 
     for (const field of requirdFields) {
       input[field] = undefined as any
@@ -64,6 +66,13 @@ describe('UserEntity', () => {
     }).toThrow(new InvalidParamError('ativo', 'O campo ativo deve ser um booleano'))
   })
 
+  test('should throws if a invalid score is provided', () => {
+    input.score = '25'
+    expect(() => {
+      entity.build(input)
+    }).toThrow(new InvalidParamError('score', 'O campo score deve ser um inteiro'))
+  })
+
   test('should return a correct Entity', () => {
     const output = entity.build(input)
     expect(output).toEqual({
@@ -71,6 +80,8 @@ describe('UserEntity', () => {
       nome: 'Zé das Couves',
       idade: 25,
       ativo: true,
+      score: 123,
+      pais: 'Brasil',
       equipe: {
         nome: 'Equipe ABC',
         lider: false,
