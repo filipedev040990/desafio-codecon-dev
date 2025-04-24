@@ -1,7 +1,7 @@
 {
-  "name": "employee-service",
+  "name": "desafio-codecon-dev",
   "version": "1.0.0",
-  "description": "Employee microsservice",
+  "description": "Desafio Técnico: Performance e Análise de Dados via API",
   "main": "main.js",
   "scripts": {
     "start": "node dist/infra/http/main.js",
@@ -29,15 +29,14 @@
     "jest-mock-extended": "^4.0.0-beta1",
     "mockdate": "^3.0.5",
     "prettier": "^3.5.3",
-    "prisma": "^6.6.0",
     "ts-jest": "^29.3.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "@prisma/client": "^6.6.0",
     "@types/cors": "^2.8.17",
     "@types/lodash": "^4.17.16",
+    "@types/multer": "^1.4.12",
     "awilix": "^12.0.5",
     "cls-hooked": "^4.2.2",
     "cors": "^2.8.5",
@@ -45,6 +44,7 @@
     "glob": "^11.0.1",
     "lodash": "^4.17.21",
     "module-alias": "^2.2.3",
+    "multer": "^1.4.5-lts.2",
     "pino": "^9.6.0",
     "pino-pretty": "^13.0.0",
     "reflect-metadata": "^0.2.2",

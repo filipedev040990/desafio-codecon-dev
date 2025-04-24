@@ -1,35 +1,30 @@
-import { ControllerInterface, HttpRequest } from '@/interfaces/controller/controller.interface'
-import { obfuscateValue } from '@/shared/helpers/string.helper'
-import { prismaClient } from '../database/prisma-client'
-import { randomUUID } from 'crypto'
-import { Request, Response } from 'express'
+import { ControllerInterface, HttpRequest } from '@/controller/controller.interface'
 import { container } from '../container/modules'
-import { getRequestId } from '@/shared/helpers/get-request-id.helper'
+import { Request, Response } from 'express'
+
+const loggerService = container.resolve('loggerService')
 
 export const expressRouteAdapter = (controller: ControllerInterface) => {
   return async (req: Request, res: Response) => {
     const input: HttpRequest = {
       body: req?.body,
-      params: req?.params,
-      query: req?.query,
-      headers: req?.headers,
     }
 
-    const loggerService = container.resolve('loggerService')
-
-    const obfuscatedBody = obfuscateValue(JSON.parse(JSON.stringify(input.body)))
+    const start = Date.now()
 
     loggerService.info('Started request', {
       method: req.method,
       route: req.url,
-      input: JSON.stringify(obfuscatedBody),
+      input: JSON.stringify(input.body),
     })
 
     const { statusCode, body } = await controller.execute(input)
 
     const output = statusCode >= 200 && statusCode <= 499 ? body : { error: body.message }
 
-    await logRequest(req, input, statusCode, output)
+    const end = Date.now() - start
+
+    Object.assign(output, { timestamp: new Date().toISOString(), execution_time_ms: end })
 
     loggerService.info('Finished request', {
       output: JSON.stringify(output),
@@ -37,20 +32,4 @@ export const expressRouteAdapter = (controller: ControllerInterface) => {
 
     res.status(statusCode).json(output)
   }
-}
-
-const logRequest = async (req: Request, input: any, statusCode: number, output: any): Promise<void> => {
-  await prismaClient.request.create({
-    data: {
-      id: randomUUID(),
-      method: req.method,
-      requestId: getRequestId(),
-      input: JSON.stringify(input.body),
-      route: req.url,
-      createdAt: new Date(),
-      status: statusCode,
-      output: JSON.stringify(output),
-      updatedAt: new Date(),
-    },
-  })
 }

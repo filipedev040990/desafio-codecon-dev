@@ -1,7 +1,7 @@
-import { HttpResponse } from '@/interfaces/controller/controller.interface'
-import LoggerService from '../services/logger.service'
+import { HttpResponse } from '@/controller/controller.interface'
+import { container } from '@/infra/container/modules'
 
-const loggerService = new LoggerService()
+const loggerService = container.resolve('loggerService')
 
 export const success = (statusCode: number, body: any): HttpResponse => ({
   statusCode,
@@ -10,22 +10,6 @@ export const success = (statusCode: number, body: any): HttpResponse => ({
 
 export const badRequest = (error: Error): HttpResponse => ({
   statusCode: 400,
-  body: {
-    error: error.name,
-    message: error.message,
-  },
-})
-
-export const unauthorized = (error: Error): HttpResponse => ({
-  statusCode: 401,
-  body: {
-    error: error.name,
-    message: error.message,
-  },
-})
-
-export const forbidden = (error: Error): HttpResponse => ({
-  statusCode: 403,
   body: {
     error: error.name,
     message: error.message,

@@ -1,4 +1,4 @@
-SERVICE=projeto_base_2025
+SERVICE=desafio_codecon_dev
 
 up:
 	docker compose up -d

@@ -1,9 +1,9 @@
 services:
-  projeto_base_2025:
+  desafio_codecon_dev:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: 'projeto_base_2025'
+    container_name: 'desafio_codecon_dev'
     restart: always
     ports:
       - 3000:3000
@@ -11,7 +11,7 @@ services:
       - .env
     volumes:
       - ./:/app
-    command: bash -c "npm install --legacy-peer-deps && npm run build && npx prisma generate && npx prisma migrate deploy && npm start"
+    command: bash -c "npm install && npm run build && npm start"
 networks:
   default:
     name: local
