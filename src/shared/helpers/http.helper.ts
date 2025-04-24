@@ -1,7 +1,7 @@
-import { HttpResponse } from '@/controller/controller.interface'
-import { container } from '@/infra/container/modules'
+import { HttpResponse } from '@/controller/types'
+import LoggerService from '../services/logger/logger.service'
 
-const loggerService = container.resolve('loggerService')
+const loggerService = new LoggerService()
 
 export const success = (statusCode: number, body: any): HttpResponse => ({
   statusCode,

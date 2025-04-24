@@ -1,4 +1,4 @@
-import { ControllerInterface, HttpRequest } from '@/controller/controller.interface'
+import { ControllerInterface, HttpRequest } from '@/controller/types'
 import { container } from '../container/modules'
 import { Request, Response } from 'express'
 
