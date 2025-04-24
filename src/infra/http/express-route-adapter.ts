@@ -10,13 +10,11 @@ export const expressRouteAdapter = (controller: ControllerInterface) => {
       body: req?.body,
     }
 
-    const start = Date.now()
-
     loggerService.info('Started request', {
       method: req.method,
       route: req.url,
-      input: JSON.stringify(input.body),
     })
+    const start = Date.now()
 
     const { statusCode, body } = await controller.execute(input)
 
@@ -24,12 +22,8 @@ export const expressRouteAdapter = (controller: ControllerInterface) => {
 
     const end = Date.now() - start
 
-    Object.assign(output, { timestamp: new Date().toISOString(), execution_time_ms: end })
+    loggerService.info('Finished request')
 
-    loggerService.info('Finished request', {
-      output: JSON.stringify(output),
-    })
-
-    res.status(statusCode).json(output)
+    res.status(statusCode).json({ info: { timestamp: new Date().toISOString(), execution_time_ms: end }, data: output })
   }
 }

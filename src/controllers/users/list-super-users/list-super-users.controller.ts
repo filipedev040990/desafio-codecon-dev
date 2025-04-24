@@ -1,4 +1,4 @@
-import { ControllerInterface, HttpRequest, HttpResponse } from '@/controllers/types'
+import { ControllerInterface, HttpResponse } from '@/controllers/types'
 import { AppContainer } from '@/infra/container/modules'
 import { handleError } from '@/shared/helpers/error.helper'
 import { success } from '@/shared/helpers/http.helper'
