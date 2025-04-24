@@ -20,7 +20,7 @@ export default class UserEntity {
   }
 
   private static validateRequiredFields(input: BuildUserEntityInput): void {
-    const requirdFields: Array<keyof BuildUserEntityInput> = ['id', 'nome', 'idade', 'ativo', 'equipe', 'logs', 'score', 'pais']
+    const requirdFields: Array<keyof BuildUserEntityInput> = ['id', 'nome', 'idade', 'equipe', 'logs', 'score', 'pais']
 
     for (const field of requirdFields) {
       if (!input[field]) {
