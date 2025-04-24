@@ -2,11 +2,15 @@ import { expressRouteAdapter } from './express-route-adapter'
 import { container } from '../container/modules'
 import { requestIdMiddleware } from '../middlewares/request-id.middleware'
 import { Router } from 'express'
+import multer from 'multer'
+import { uploadUsersByJsonFile } from '../middlewares/upload-users-by-json'
 
 const router = Router()
 
+const upload = multer({ dest: 'uploads/' })
+
 router.use(requestIdMiddleware)
 
-router.post('/users', expressRouteAdapter(container.resolve('saveUserController')))
+router.post('/users', upload.single('users'), uploadUsersByJsonFile, expressRouteAdapter(container.resolve('saveUserController')))
 
 export { router }
