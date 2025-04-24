@@ -1,5 +1,5 @@
 import { InvalidParamError, MissingParamError } from '@/shared/errors'
-import { BuildUserEntityInput, Equipe, Log } from './types'
+import { UserCommonData, Equipe, Log } from './types'
 
 export default class UserEntity {
   constructor(
@@ -13,14 +13,14 @@ export default class UserEntity {
     public readonly logs: Log[]
   ) {}
 
-  public static build(input: BuildUserEntityInput): UserEntity {
+  public static build(input: UserCommonData): UserEntity {
     this.validateRequiredFields(input)
     this.validateFieldsTypes(input)
     return this.create(input)
   }
 
-  private static validateRequiredFields(input: BuildUserEntityInput): void {
-    const requirdFields: Array<keyof BuildUserEntityInput> = ['id', 'nome', 'idade', 'equipe', 'logs', 'score', 'pais']
+  private static validateRequiredFields(input: UserCommonData): void {
+    const requirdFields: Array<keyof UserCommonData> = ['id', 'nome', 'idade', 'equipe', 'logs', 'score', 'pais']
 
     for (const field of requirdFields) {
       if (!input[field]) {
@@ -29,7 +29,7 @@ export default class UserEntity {
     }
   }
 
-  private static validateFieldsTypes(input: BuildUserEntityInput): void {
+  private static validateFieldsTypes(input: UserCommonData): void {
     if (typeof input.idade !== 'number') {
       throw new InvalidParamError('idade', 'O campo idade deve ser um inteiro')
     }
@@ -43,7 +43,7 @@ export default class UserEntity {
     }
   }
 
-  private static create(input: BuildUserEntityInput): UserEntity {
+  private static create(input: UserCommonData): UserEntity {
     const { id, nome, idade, ativo, pais, score, equipe, logs } = input
     return new UserEntity(id, nome, idade, score, ativo, pais, equipe, logs)
   }

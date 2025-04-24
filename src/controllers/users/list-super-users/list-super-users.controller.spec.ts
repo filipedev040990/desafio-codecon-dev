@@ -1,6 +1,7 @@
 import ListSuperUsersController from './list-super-users.controller'
-import { ListSuperUsersUseCaseInterface, ListSuperUsersUseCaseOutput } from '@/usecases/users/list-super-users/types'
+import { ListSuperUsersUseCaseInterface } from '@/usecases/users/list-super-users/types'
 import { LoggerServiceInterface } from '@/shared/services/logger/logger.service.interface'
+import { UserCommonData } from '@/entities/users/types'
 import { mock } from 'jest-mock-extended'
 
 const params: any = {
@@ -8,7 +9,7 @@ const params: any = {
   loggerService: mock<LoggerServiceInterface>(),
 }
 
-const usecaseOutput: ListSuperUsersUseCaseOutput[] = [
+const usecaseOutput: UserCommonData[] = [
   {
     id: '123456',
     nome: 'Zé das Couves',

@@ -1,6 +1,7 @@
 import { UserRepositoryData, UserRepositoryInterface } from '@/infra/database/repositories/in-memory/types'
-import { ListSuperUsersUseCaseInterface, ListSuperUsersUseCaseOutput } from './types'
+import { ListSuperUsersUseCaseInterface } from './types'
 import { AppContainer } from '@/infra/container/modules'
+import { UserCommonData } from '@/entities/users/types'
 
 export default class ListSuperUsersUsecase implements ListSuperUsersUseCaseInterface {
   private readonly userRepository: UserRepositoryInterface
@@ -9,14 +10,14 @@ export default class ListSuperUsersUsecase implements ListSuperUsersUseCaseInter
     this.userRepository = params.userRepository
   }
 
-  async execute(): Promise<ListSuperUsersUseCaseOutput[] | null> {
+  async execute(): Promise<UserCommonData[] | null> {
     const superUsers = await this.userRepository.listSuperUsers()
 
     if (!superUsers?.length) {
       return null
     }
 
-    const output: ListSuperUsersUseCaseOutput[] = superUsers.map((superUser: UserRepositoryData) => {
+    const output: UserCommonData[] = superUsers.map((superUser: UserRepositoryData) => {
       return {
         id: superUser.id,
         nome: superUser.nome,

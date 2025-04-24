@@ -1,5 +1,5 @@
 import UserEntity from './user.entity'
-import { BuildUserEntityInput } from './types'
+import { UserCommonData } from './types'
 import { InvalidParamError, MissingParamError } from '@/shared/errors'
 
 describe('UserEntity', () => {
@@ -39,7 +39,7 @@ describe('UserEntity', () => {
   })
 
   test('should throw if a required field is not provided', () => {
-    const requirdFields: Array<keyof BuildUserEntityInput> = ['id', 'nome', 'idade', 'ativo', 'equipe', 'logs', 'score', 'pais']
+    const requirdFields: Array<keyof UserCommonData> = ['id', 'nome', 'idade', 'equipe', 'logs', 'score', 'pais']
 
     for (const field of requirdFields) {
       input[field] = undefined as any

@@ -1,8 +1,8 @@
 import UserEntity from '@/entities/users/user.entity'
 import SaveUserUsecase from './save-user.usecase'
-import { SaveUserUsecaseInput } from './types'
-import { mock } from 'jest-mock-extended'
 import { UserRepositoryInterface } from '@/infra/database/repositories/in-memory/types'
+import { UserCommonData } from '@/entities/users/types'
+import { mock } from 'jest-mock-extended'
 
 const params: any = {
   userRepository: mock<UserRepositoryInterface>(),
@@ -10,7 +10,7 @@ const params: any = {
 
 describe('SaveUserUsecase', () => {
   let usecase: SaveUserUsecase
-  let input: SaveUserUsecaseInput[]
+  let input: UserCommonData[]
 
   beforeEach(() => {
     usecase = new SaveUserUsecase(params)

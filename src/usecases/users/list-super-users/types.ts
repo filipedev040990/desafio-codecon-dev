@@ -1,16 +1,5 @@
-import { Equipe, Log } from '@/entities/users/types'
-
-export type ListSuperUsersUseCaseOutput = {
-  id: string
-  nome: string
-  idade: number
-  score: number
-  ativo: boolean
-  pais: string
-  equipe: Equipe
-  logs: Log[]
-}
+import { UserCommonData } from '@/entities/users/types'
 
 export interface ListSuperUsersUseCaseInterface {
-  execute: () => Promise<ListSuperUsersUseCaseOutput[] | null>
+  execute: () => Promise<UserCommonData[] | null>
 }

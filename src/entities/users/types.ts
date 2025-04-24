@@ -12,7 +12,7 @@ export type Log = {
   acao: string
 }
 
-export type BuildUserEntityInput = {
+export type UserCommonData = {
   id: string
   nome: string
   idade: number

@@ -1,6 +1,6 @@
+import { UserCommonData } from '@/entities/users/types'
 import { InvalidParamError } from '@/shared/errors'
 import LoggerService from '@/shared/services/logger/logger.service'
-import { SaveUserUsecaseInput } from '@/usecases/users/save/types'
 import { NextFunction, Request, Response } from 'express'
 import fs from 'fs'
 
@@ -22,7 +22,7 @@ export const uploadUsersByJsonFile = async (req: Request, res: Response, next: N
 
     data = JSON.parse(data)
 
-    const body: SaveUserUsecaseInput[] = data.map((usuario: SaveUserUsecaseInput) => {
+    const body: UserCommonData[] = data.map((usuario: UserCommonData) => {
       return {
         id: usuario.id,
         nome: usuario.nome,

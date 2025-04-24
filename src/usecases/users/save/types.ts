@@ -1,15 +1,4 @@
-import { Equipe, Log } from '@/entities/users/types'
-
-export type SaveUserUsecaseInput = {
-  id: string
-  nome: string
-  idade: number
-  score: number
-  ativo: boolean
-  pais: string
-  equipe: Equipe
-  logs: Log[]
-}
+import { UserCommonData } from '@/entities/users/types'
 
 export type SaveUserUsecaseOutput = {
   message: string
@@ -17,5 +6,5 @@ export type SaveUserUsecaseOutput = {
 }
 
 export interface SaveUserUsecaseInterface {
-  execute: (input: SaveUserUsecaseInput[]) => Promise<SaveUserUsecaseOutput>
+  execute: (input: UserCommonData[]) => Promise<SaveUserUsecaseOutput>
 }
