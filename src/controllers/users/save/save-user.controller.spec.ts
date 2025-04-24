@@ -1,4 +1,4 @@
-import { HttpRequest } from '@/controller/types'
+import { HttpRequest } from '@/controllers/types'
 import SaveUserController from './save-user.controller'
 import { mock } from 'jest-mock-extended'
 import { SaveUserUsecaseInterface } from '@/usecases/users/save/types'

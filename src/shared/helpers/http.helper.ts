@@ -1,4 +1,4 @@
-import { HttpResponse } from '@/controller/types'
+import { HttpResponse } from '@/controllers/types'
 import LoggerService from '../services/logger/logger.service'
 
 const loggerService = new LoggerService()
