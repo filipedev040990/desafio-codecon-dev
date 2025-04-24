@@ -1,4 +1,4 @@
-jest.mock('@/shared/services/logger.service', () => {
+jest.mock('@/shared/services/logger/logger.service', () => {
   return {
     __esModule: true,
     default: jest.fn().mockImplementation(() => ({
