@@ -2,15 +2,17 @@ import { SaveUserUsecaseInterface } from '@/usecases/users/save/types'
 import { UserRepositoryInterface } from '../database/repositories/in-memory/types'
 import { LoggerServiceInterface } from '@/shared/services/logger/logger.service.interface'
 import { createContainer, asClass } from 'awilix'
+import { ListSuperUsersUseCaseInterface } from '@/usecases/users/list-super-users/types'
+import { ListTopCountriesUsecaseInterface } from '@/usecases/users/list-top-countries/types'
 import path from 'path'
 import lodash from 'lodash'
-import { ListSuperUsersUseCaseInterface } from '@/usecases/users/list-super-users/types'
 
 export type AppContainer = {
   saveUserUsecase: SaveUserUsecaseInterface
   userRepository: UserRepositoryInterface
   loggerService: LoggerServiceInterface
   listSuperUsersUsecase: ListSuperUsersUseCaseInterface
+  listTopCountriesUsecase: ListTopCountriesUsecaseInterface
 }
 
 const container = createContainer()

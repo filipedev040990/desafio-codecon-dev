@@ -12,5 +12,4 @@ export type UserRepositoryData = {
 export interface UserRepositoryInterface {
   save: (input: UserRepositoryData) => Promise<void>
   listSuperUsers: () => Promise<UserRepositoryData[] | null>
-  listTopCountries: () => Promise<UserRepositoryData[] | null>
 }
