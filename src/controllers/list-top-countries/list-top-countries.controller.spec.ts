@@ -1,7 +1,7 @@
-import { ListSuperUsersUseCaseInterface } from '@/usecases/users/list-super-users/types'
+import { ListSuperUsersUseCaseInterface } from '@/usecases/list-super-users/types'
 import { LoggerServiceInterface } from '@/shared/services/logger/logger.service.interface'
 import ListTopCountriesController from './list-top-countries.controller'
-import { ListTopCountriesOutput } from '@/usecases/users/list-top-countries/types'
+import { ListTopCountriesOutput } from '@/usecases/list-top-countries/types'
 import { mock } from 'jest-mock-extended'
 
 const params: any = {

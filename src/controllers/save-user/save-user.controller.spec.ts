@@ -1,7 +1,7 @@
 import { HttpRequest } from '@/controllers/types'
 import SaveUserController from './save-user.controller'
 import { mock } from 'jest-mock-extended'
-import { SaveUserUsecaseInterface } from '@/usecases/users/save/types'
+import { SaveUserUsecaseInterface } from '@/usecases/save-user/types'
 import { LoggerServiceInterface } from '@/shared/services/logger/logger.service.interface'
 
 const params: any = {

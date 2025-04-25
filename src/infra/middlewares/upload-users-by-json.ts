@@ -1,4 +1,4 @@
-import { UserCommonData } from '@/entities/users/types'
+import { UserCommonData } from '@/entities/types'
 import { InvalidParamError } from '@/shared/errors'
 import LoggerService from '@/shared/services/logger/logger.service'
 import { NextFunction, Request, Response } from 'express'

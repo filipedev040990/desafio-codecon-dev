@@ -1,7 +1,7 @@
 import ListSuperUsersController from './list-super-users.controller'
-import { ListSuperUsersUseCaseInterface } from '@/usecases/users/list-super-users/types'
+import { ListSuperUsersUseCaseInterface } from '@/usecases/list-super-users/types'
 import { LoggerServiceInterface } from '@/shared/services/logger/logger.service.interface'
-import { UserCommonData } from '@/entities/users/types'
+import { UserCommonData } from '@/entities/types'
 import { mock } from 'jest-mock-extended'
 
 const params: any = {

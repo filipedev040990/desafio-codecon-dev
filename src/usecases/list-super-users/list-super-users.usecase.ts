@@ -1,7 +1,7 @@
 import { UserRepositoryData, UserRepositoryInterface } from '@/infra/database/repositories/in-memory/types'
 import { ListSuperUsersUseCaseInterface } from './types'
 import { AppContainer } from '@/infra/container/modules'
-import { UserCommonData } from '@/entities/users/types'
+import { UserCommonData } from '@/entities/types'
 
 export default class ListSuperUsersUsecase implements ListSuperUsersUseCaseInterface {
   private readonly userRepository: UserRepositoryInterface

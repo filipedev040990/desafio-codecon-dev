@@ -3,7 +3,7 @@ import { AppContainer } from '@/infra/container/modules'
 import { handleError } from '@/shared/helpers/error.helper'
 import { success } from '@/shared/helpers/http.helper'
 import { LoggerServiceInterface } from '@/shared/services/logger/logger.service.interface'
-import { SaveUserUsecaseInterface } from '@/usecases/users/save/types'
+import { SaveUserUsecaseInterface } from '@/usecases/save-user/types'
 
 export default class SaveUserController implements ControllerInterface {
   private readonly saveUserUsecase: SaveUserUsecaseInterface

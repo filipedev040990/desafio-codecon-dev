@@ -1,7 +1,7 @@
-import UserEntity from '@/entities/users/user.entity'
+import UserEntity from '@/entities/user.entity'
 import SaveUserUsecase from './save-user.usecase'
 import { UserRepositoryInterface } from '@/infra/database/repositories/in-memory/types'
-import { UserCommonData } from '@/entities/users/types'
+import { UserCommonData } from '@/entities/types'
 import { mock } from 'jest-mock-extended'
 
 const params: any = {

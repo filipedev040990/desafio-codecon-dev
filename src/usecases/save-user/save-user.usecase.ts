@@ -1,8 +1,8 @@
-import UserEntity from '@/entities/users/user.entity'
+import UserEntity from '@/entities/user.entity'
 import { SaveUserUsecaseInterface, SaveUserUsecaseOutput } from './types'
 import { UserRepositoryData, UserRepositoryInterface } from '@/infra/database/repositories/in-memory/types'
 import { AppContainer } from '@/infra/container/modules'
-import { UserCommonData } from '@/entities/users/types'
+import { UserCommonData } from '@/entities/types'
 
 export default class SaveUserUsecase implements SaveUserUsecaseInterface {
   private readonly userRepository: UserRepositoryInterface

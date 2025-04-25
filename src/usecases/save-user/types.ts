@@ -1,4 +1,4 @@
-import { UserCommonData } from '@/entities/users/types'
+import { UserCommonData } from '@/entities/types'
 
 export type SaveUserUsecaseOutput = {
   message: string

@@ -1,9 +1,9 @@
-import { SaveUserUsecaseInterface } from '@/usecases/users/save/types'
+import { SaveUserUsecaseInterface } from '@/usecases/save-user/types'
 import { UserRepositoryInterface } from '../database/repositories/in-memory/types'
 import { LoggerServiceInterface } from '@/shared/services/logger/logger.service.interface'
+import { ListSuperUsersUseCaseInterface } from '@/usecases/list-super-users/types'
+import { ListTopCountriesUsecaseInterface } from '@/usecases/list-top-countries/types'
 import { createContainer, asClass } from 'awilix'
-import { ListSuperUsersUseCaseInterface } from '@/usecases/users/list-super-users/types'
-import { ListTopCountriesUsecaseInterface } from '@/usecases/users/list-top-countries/types'
 import path from 'path'
 import lodash from 'lodash'
 
