@@ -49,6 +49,7 @@ Recebe e armazena os usuários na memória. Pode simular um banco de dados em me
 - Agrupa os superusuários por país.
 - Retorna os 5 países com maior número de superusuários.
 
+
 ### `GET /team-insights`
 
 - Agrupa por `team.name`.
