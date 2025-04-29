@@ -16,4 +16,12 @@ export default class UserRepository implements UserRepositoryInterface {
 
     return superUsers
   }
+
+  async listAll(): Promise<UserRepositoryData[] | null> {
+    if (!this.users.length) {
+      return null
+    }
+
+    return this.users
+  }
 }

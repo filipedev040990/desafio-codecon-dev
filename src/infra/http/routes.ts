@@ -14,5 +14,6 @@ router.use(requestIdMiddleware)
 router.post('/users', upload.single('users'), uploadUsersByJsonFile, expressRouteAdapter(container.resolve('saveUserController')))
 router.get('/superusers', expressRouteAdapter(container.resolve('listSuperUsersController')))
 router.get('/top-countries', expressRouteAdapter(container.resolve('listTopCountriesController')))
+router.get('/team-insights', expressRouteAdapter(container.resolve('listTeamInsightsController')))
 
 export { router }
