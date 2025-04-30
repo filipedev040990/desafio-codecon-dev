@@ -9,13 +9,15 @@ const params: any = {
   loggerService: mock<LoggerServiceInterface>(),
 }
 
-const usecaseOutput: ListActiveUsersPerDayOutput[] = [
-  { date: '2025-04-01', total: 2 },
-  { date: '2025-04-02', total: 5 },
-  { date: '2025-04-03', total: 2 },
-  { date: '2025-04-05', total: 10 },
-  { date: '2025-04-07', total: 50 },
-]
+const usecaseOutput: ListActiveUsersPerDayOutput = {
+  logins: [
+    { date: '2025-04-01', total: 2 },
+    { date: '2025-04-02', total: 5 },
+    { date: '2025-04-03', total: 2 },
+    { date: '2025-04-05', total: 10 },
+    { date: '2025-04-07', total: 50 },
+  ],
+}
 
 describe('ListActiveUsersPerDayController', () => {
   let controller: ListActiveUsersPerDayController

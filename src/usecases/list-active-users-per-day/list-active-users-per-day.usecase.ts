@@ -9,7 +9,7 @@ export default class ListActiveUsersPerDayUsecase implements ListActiveUsersPerD
     this.userRepository = params.userRepository
   }
 
-  async execute(minLogins?: number): Promise<ListActiveUsersPerDayOutput[] | null> {
+  async execute(minLogins?: number): Promise<ListActiveUsersPerDayOutput | null> {
     const users = await this.userRepository.listAll()
 
     if (!users) {
@@ -38,6 +38,6 @@ export default class ListActiveUsersPerDayUsecase implements ListActiveUsersPerD
       output = output.filter((o) => o.total >= minLogins)
     }
 
-    return output.sort((a, b) => a.date.localeCompare(b.date))
+    return { logins: output.sort((a, b) => a.date.localeCompare(b.date)) }
   }
 }

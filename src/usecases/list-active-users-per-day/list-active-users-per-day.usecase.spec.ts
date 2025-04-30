@@ -181,25 +181,29 @@ describe('ListActiveUsersPerDayUsecase', () => {
   test('should return a correct output when minLogins is provided', async () => {
     minLogins = 2
     const output = await usecase.execute(minLogins)
-    expect(output).toEqual([
-      { date: '2025-04-01', total: 2 },
-      { date: '2025-04-03', total: 2 },
-    ])
+    expect(output).toEqual({
+      logins: [
+        { date: '2025-04-01', total: 2 },
+        { date: '2025-04-03', total: 2 },
+      ],
+    })
 
     minLogins = 3
     const output2 = await usecase.execute(minLogins)
-    expect(output2).toEqual([])
+    expect(output2).toEqual({ logins: [] })
   })
 
   test('should return a correct output when minLogins is note provided', async () => {
     minLogins = undefined as any
     const output = await usecase.execute(minLogins)
-    expect(output).toEqual([
-      { date: '2025-04-01', total: 2 },
-      { date: '2025-04-02', total: 1 },
-      { date: '2025-04-03', total: 2 },
-      { date: '2025-04-05', total: 1 },
-      { date: '2025-04-07', total: 1 },
-    ])
+    expect(output).toEqual({
+      logins: [
+        { date: '2025-04-01', total: 2 },
+        { date: '2025-04-02', total: 1 },
+        { date: '2025-04-03', total: 2 },
+        { date: '2025-04-05', total: 1 },
+        { date: '2025-04-07', total: 1 },
+      ],
+    })
   })
 })
