@@ -5,6 +5,7 @@ import { ListSuperUsersUseCaseInterface } from '@/usecases/list-super-users/type
 import { ListTopCountriesUsecaseInterface } from '@/usecases/list-top-countries/types'
 import { ListTeamInsightsUsecaseInterface } from '@/usecases/list-team-insights/types'
 import { ListActiveUsersPerDayUsecaseInterface } from '@/usecases/list-active-users-per-day/types'
+import { HttpServiceInterface } from '@/shared/services/http/http.service.interface'
 import { createContainer, asClass } from 'awilix'
 import path from 'path'
 import lodash from 'lodash'
@@ -17,6 +18,7 @@ export type AppContainer = {
   listTopCountriesUsecase: ListTopCountriesUsecaseInterface
   listTeamInsightsUsecase: ListTeamInsightsUsecaseInterface
   listActiveUsersPerDayUsecase: ListActiveUsersPerDayUsecaseInterface
+  httpService: HttpServiceInterface
 }
 
 const container = createContainer()
