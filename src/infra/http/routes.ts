@@ -15,5 +15,6 @@ router.post('/users', upload.single('users'), uploadUsersByJsonFile, expressRout
 router.get('/superusers', expressRouteAdapter(container.resolve('listSuperUsersController')))
 router.get('/top-countries', expressRouteAdapter(container.resolve('listTopCountriesController')))
 router.get('/team-insights', expressRouteAdapter(container.resolve('listTeamInsightsController')))
+router.get('/active-users-per-day', expressRouteAdapter(container.resolve('listActiveUsersPerDayController')))
 
 export { router }

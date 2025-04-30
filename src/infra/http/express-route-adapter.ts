@@ -8,6 +8,8 @@ export const expressRouteAdapter = (controller: ControllerInterface) => {
   return async (req: Request, res: Response) => {
     const input: HttpRequest = {
       body: req?.body,
+      params: req?.params,
+      query: req?.query,
     }
 
     loggerService.info('Started request', {

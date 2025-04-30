@@ -24,7 +24,7 @@ describe('ListActiveUsersPerDayController', () => {
   beforeEach(() => {
     controller = new ListActiveUsersPerDayController(params)
     input = {
-      params: {
+      query: {
         minLogin: 2,
       },
     }

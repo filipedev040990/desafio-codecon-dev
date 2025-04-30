@@ -16,7 +16,7 @@ export default class ListActiveUsersPerDayController implements ControllerInterf
 
   async execute(input: HttpRequest): Promise<HttpResponse> {
     try {
-      const output = await this.listActiveUsersPerDayUsecase.execute(input?.params?.minLogin)
+      const output = await this.listActiveUsersPerDayUsecase.execute(input?.query?.minLogin)
       return success(200, output)
     } catch (error) {
       this.loggerService.error('Error listing active users per day', { error })
