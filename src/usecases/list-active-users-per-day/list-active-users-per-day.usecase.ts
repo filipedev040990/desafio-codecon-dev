@@ -1,7 +1,6 @@
 import { UserRepositoryData, UserRepositoryInterface } from '@/infra/database/repositories/in-memory/types'
 import { ListActiveUsersPerDayOutput, ListActiveUsersPerDayUsecaseInterface } from './types'
 import { AppContainer } from '@/infra/container/modules'
-import { date } from 'zod'
 
 export default class ListActiveUsersPerDayUsecase implements ListActiveUsersPerDayUsecaseInterface {
   private readonly userRepository: UserRepositoryInterface
