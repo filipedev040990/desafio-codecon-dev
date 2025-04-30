@@ -16,13 +16,14 @@ export const expressRouteAdapter = (controller: ControllerInterface) => {
       method: req.method,
       route: req.url,
     })
-    const start = Date.now()
+
+    const start = performance.now()
 
     const { statusCode, body } = await controller.execute(input)
 
     const output = statusCode >= 200 && statusCode <= 499 ? body : { error: body.message }
 
-    const end = Date.now() - start
+    const end = Math.round(performance.now() - start)
 
     loggerService.info('Finished request')
 

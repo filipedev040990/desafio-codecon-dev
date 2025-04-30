@@ -16,5 +16,6 @@ router.get('/superusers', expressRouteAdapter(container.resolve('listSuperUsersC
 router.get('/top-countries', expressRouteAdapter(container.resolve('listTopCountriesController')))
 router.get('/team-insights', expressRouteAdapter(container.resolve('listTeamInsightsController')))
 router.get('/active-users-per-day', expressRouteAdapter(container.resolve('listActiveUsersPerDayController')))
+router.get('/evaluation', expressRouteAdapter(container.resolve('evaluationController')))
 
 export { router }

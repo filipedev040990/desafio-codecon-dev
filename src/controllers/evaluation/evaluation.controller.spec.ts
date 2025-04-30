@@ -1,10 +1,10 @@
 import { LoggerServiceInterface } from '@/shared/services/logger/logger.service.interface'
-import EvalutionController from './evalution.controller'
+import EvaluationController from './evaluation.controller'
 import { EvaluationUsecaseInterface, EvaluationUsecaseOutput } from '@/usecases/evaluation/types'
 import { mock } from 'jest-mock-extended'
 
 const params: any = {
-  evalutionUsecase: mock<EvaluationUsecaseInterface>(),
+  evaluationUsecase: mock<EvaluationUsecaseInterface>(),
   loggerService: mock<LoggerServiceInterface>(),
 }
 
@@ -17,17 +17,17 @@ const usecaseOutput: EvaluationUsecaseOutput = {
   },
 }
 
-describe('EvalutionController', () => {
-  let controller: EvalutionController
+describe('EvaluationController', () => {
+  let controller: EvaluationController
 
   beforeEach(() => {
-    controller = new EvalutionController(params)
-    jest.spyOn(params.evalutionUsecase, 'execute').mockResolvedValue(usecaseOutput)
+    controller = new EvaluationController(params)
+    jest.spyOn(params.evaluationUsecase, 'execute').mockResolvedValue(usecaseOutput)
   })
 
   test('should call ListSuperUsersUseCase.execute once', async () => {
     await controller.execute()
-    expect(params.evalutionUsecase.execute).toHaveBeenCalledTimes(1)
+    expect(params.evaluationUsecase.execute).toHaveBeenCalledTimes(1)
   })
 
   test('should return a correct output', async () => {

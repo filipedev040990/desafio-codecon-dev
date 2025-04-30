@@ -20,7 +20,7 @@ export type AppContainer = {
   listTeamInsightsUsecase: ListTeamInsightsUsecaseInterface
   listActiveUsersPerDayUsecase: ListActiveUsersPerDayUsecaseInterface
   httpService: HttpServiceInterface
-  evalutionUsecase: EvaluationUsecaseInterface
+  evaluationUsecase: EvaluationUsecaseInterface
 }
 
 const container = createContainer()
