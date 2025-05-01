@@ -1,0 +1,479 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Desafio Codecon-Dev",
+    "description": "Desafio Técnico: Performance e Análise de Dados via API",
+    "version": "1.0.0",
+    "contact": {
+       "email": "filipedev040990@gmail.com"
+    }
+  },
+  "tags": [
+    {
+      "name": "Users"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "createUser",
+        "description": "Cadastra usuarios a partir de um JSON com dados",
+        "summary": "Envia o arquivo JSON de usuários para ser carregado na memória.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "users":{
+                    "type": "string",
+                    "format": "binary",
+                    "description": "Arquivo JSON a ser enviado. O nome deve ser 'users' "
+                  }
+                },
+                "required": ["users"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Arquivo recebido com sucesso"
+                    },
+                    "user_count": {
+                      "type": "number",
+                      "example": 10000
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/superusers": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "superusers",
+        "description": "Retorna lista de super usuarios",
+        "summary": "Retorna os usuários com score >= 900 e ativos, com tempo de execução.",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "c5cf0168-2ad6-405e-a384-8c38563cf40a"
+                      },
+                      "nome": {
+                        "type": "string",
+                        "example": "Emanuella Barbosa"
+                      },
+                      "ativo": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "idade": {
+                        "type": "number",
+                        "example": 80
+                      },
+                      "pais": {
+                        "type": "string",
+                        "example": "Brasil"
+                      },
+                      "score": {
+                        "type": "number",
+                        "example": 1250
+                      },
+                      "equipe": {
+                        "type": "object",
+                        "properties": {
+                          "nome": {
+                            "type": "string",
+                            "example": "UX Wizards"
+                          },
+                          "lider": {
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "projetos": {
+                            "type": "array",
+                            "items": {
+                              "properties": {
+                                "nome":{
+                                  "type": "string",
+                                  "example": "API Pública"
+                                },
+                                "concluido": {
+                                  "type": "boolean",
+                                  "example": false
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "logs": {
+                        "type": "array",
+                        "items": {
+                          "properties": {
+                            "data": {
+                              "type": "string",
+                              "example": "2025-01-15"
+                            },
+                            "acao": {
+                              "type": "string",
+                              "example": "login"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/top-countries": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "top-countries",
+        "description": "Retorna lista de super usuarios agrupados por país",
+        "summary": "Agrupa os superusuários por país e retorna os 5 com mais usuários.",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "country": {
+                        "type": "string",
+                        "example": "Canadá"
+                      },
+                      "total": {
+                        "type": "number",
+                        "example": 800
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/team-insights": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "team-insights",
+        "description": "Retorna estatísticas por equipe",
+        "summary": "Retorna estatísticas por equipe com base nos membros, projetos e liderança.",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "team": {
+                        "type": "string",
+                        "example": "Frontend Avengers"
+                      },
+                      "total_members": {
+                        "type": "number",
+                        "example": 48
+                      },
+                      "leaders": {
+                        "type": "number",
+                        "example": 15
+                      },
+                      "completed_projects": {
+                        "type": "number",
+                        "example": 100
+                      },
+                      "active_percentage": {
+                        "type": "number",
+                        "example": 90
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/active-users-per-day": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "active-users-per-day",
+        "description": "Retorna o número de logins por data",
+        "summary": "Retorna o número total de logins por data.",
+        "parameters": [
+          {
+            "name": "minLogin",
+            "in": "query",
+            "description": "Valor mínimo de logins para filtrar os usuários",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "date": {
+                        "type": "string",
+                        "example": "2025-01-01"
+                      },
+                      "total": {
+                        "type": "number",
+                        "example": 48
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/evaluation": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "evaluation",
+        "description": "Executa testes automáticos nos endpoints da própria API e retorna um relatório de pontuação.",
+        "summary": "Executa testes automáticos nos endpoints da própria API e retorna um relatório de pontuação.",
+        "responses": {
+          "200": {
+            "description": "Sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "tested_endpoints": {
+                      "type": "object",
+                      "properties": {
+                        "/superusers": {
+                          "type": "object",
+                          "properties": {
+                            "status": {
+                              "type": "number",
+                              "example": 200
+                            },
+                            "time_ms": {
+                              "type": "number",
+                              "example": 600
+                            },
+                            "valid_response":{
+                              "type": "boolean",
+                              "example": true
+                            }
+                          }
+                        },
+                        "/top-countries": {
+                          "type": "object",
+                          "properties": {
+                            "status": {
+                              "type": "number",
+                              "example": 200
+                            },
+                            "time_ms": {
+                              "type": "number",
+                              "example": 900
+                            },
+                            "valid_response":{
+                              "type": "boolean",
+                              "example": true
+                            }
+                          }
+                        },
+                        "/team-insights": {
+                          "type": "object",
+                          "properties": {
+                            "status": {
+                              "type": "number",
+                              "example": 200
+                            },
+                            "time_ms": {
+                              "type": "number",
+                              "example": 900
+                            },
+                            "valid_response":{
+                              "type": "boolean",
+                              "example": true
+                            }
+                          }
+                        },
+                        "/active-users-per-day": {
+                          "type": "object",
+                          "properties": {
+                            "status": {
+                              "type": "number",
+                              "example": 200
+                            },
+                            "time_ms": {
+                              "type": "number",
+                              "example": 1000
+                            },
+                            "valid_response":{
+                              "type": "boolean",
+                              "example": true
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
